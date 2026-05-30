@@ -261,6 +261,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.100.14
         version: 5.100.14(react@19.2.6)
+      '@vitto/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
