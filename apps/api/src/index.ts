@@ -1,6 +1,8 @@
 import express from "express";
 import cors from 'cors'
 import { errorHandler } from "./middleware/error-handler";
+import { getSummary } from "./controllers/application-controller";
+import { applicationsRouter } from "./routes/applications-router";
 
 const allowedOrigins = [process.env.WEB_URL] //add other origins here
 
@@ -26,9 +28,7 @@ app.use(cors({
 app.use(express.json());
 
 //routes
-// app.use('/user', userRouter)
-
-
+app.use('/api/applications', applicationsRouter)
 
 app.use(errorHandler)
 

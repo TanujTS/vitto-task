@@ -1,5 +1,61 @@
+# Dependencies
 node_modules/
-dist/
-.env
-.env.local
+.pnpm-store/
+
+# Logs
+logs/
 *.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# Cache
+.cache/
+.parcel-cache/
+.turbo/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+
+# Testing
+playwright-report/
+test-results/
+
+# Prisma (if used)
+prisma/dev.db
+prisma/dev.db-journal
+
+# Generated files
+generated/
+
+# Misc
+*.pem
