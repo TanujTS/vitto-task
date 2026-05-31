@@ -1,0 +1,16 @@
+node_modules
+apps/*/node_modules
+packages/*/node_modules
+
+dist
+apps/*/dist
+packages/*/dist
+
+.git
+.gitignore
+
+*.md
+.env
+.env.*
+
+apps/web
