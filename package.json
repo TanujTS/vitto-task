@@ -15,7 +15,7 @@
   "license": "ISC",
   "devEngines": {
     "packageManager": {
-      "name": "pnpm",
+      "name": "pnpm@11.5.0",
       "version": "^11.1.2",
       "onFail": "download"
     }
