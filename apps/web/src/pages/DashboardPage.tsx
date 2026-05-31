@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useApplications, useApplicationSummary, useUpdateApplicationStatus } from "../hooks/useApplications";
-import { type Application, type ApplicationStatus } from "@vitto/types";
+import { type ApplicationStatus } from "@vitto/types";
 import { IconArrowLeft, IconSearch, IconChevronDown, IconChevronUp, IconCheck, IconX, IconClock } from "@tabler/icons-react";
 
 export default function DashboardPage() {
@@ -15,20 +15,20 @@ export default function DashboardPage() {
 
   const filteredApplications = useMemo(() => {
     if (!applications) return [];
-    
+
     let result = applications;
     if (statusFilter !== "all") {
       result = result.filter(app => app.status === statusFilter);
     }
-    
+
     if (searchQuery.trim()) {
       const lowerQuery = searchQuery.toLowerCase();
-      result = result.filter(app => 
-        app.name.toLowerCase().includes(lowerQuery) || 
+      result = result.filter(app =>
+        app.name.toLowerCase().includes(lowerQuery) ||
         app.id.toLowerCase().includes(lowerQuery)
       );
     }
-    
+
     return result;
   }, [applications, statusFilter, searchQuery]);
 
@@ -43,12 +43,12 @@ export default function DashboardPage() {
   const getStatusBadge = (status: ApplicationStatus) => {
     switch (status) {
       case "approved":
-        return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-xs font-medium text-green-400"><IconCheck size={12}/> Approved</span>;
+        return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-xs font-medium text-green-400"><IconCheck size={12} /> Approved</span>;
       case "rejected":
-        return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-red-500/20 bg-red-500/10 text-xs font-medium text-red-400"><IconX size={12}/> Rejected</span>;
+        return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-red-500/20 bg-red-500/10 text-xs font-medium text-red-400"><IconX size={12} /> Rejected</span>;
       case "pending":
       default:
-        return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-yellow-500/20 bg-yellow-500/10 text-xs font-medium text-yellow-400"><IconClock size={12}/> Pending</span>;
+        return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-yellow-500/20 bg-yellow-500/10 text-xs font-medium text-yellow-400"><IconClock size={12} /> Pending</span>;
     }
   };
 
@@ -75,7 +75,7 @@ export default function DashboardPage() {
         {/* Header & Stats */}
         <div className="mb-10">
           <h1 className="text-3xl font-heading font-bold text-white mb-6">Dashboard</h1>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             <div className="glass-card p-5 rounded-2xl border border-white/5">
               <p className="text-sm text-white/40 mb-1">Total Applications</p>
@@ -144,7 +144,7 @@ export default function DashboardPage() {
               {filteredApplications.map((app) => (
                 <div key={app.id} className="group">
                   {/* Row Header */}
-                  <div 
+                  <div
                     onClick={() => toggleExpand(app.id)}
                     className="p-4 md:px-6 md:py-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-white/[0.02] transition-colors"
                   >
@@ -154,7 +154,7 @@ export default function DashboardPage() {
                       </div>
                       <div>
                         <p className="text-white font-medium">{app.name}</p>
-                        <p className="text-xs text-white/40">ID: {app.id.substring(0,8)}</p>
+                        <p className="text-xs text-white/40">ID: {app.id.substring(0, 8)}</p>
                       </div>
                     </div>
 
@@ -163,7 +163,7 @@ export default function DashboardPage() {
                         <p className="text-white font-medium">₹ {app.amount.toLocaleString()}</p>
                         <p className="text-xs text-white/40">{new Date(app.createdAt).toLocaleDateString()}</p>
                       </div>
-                      
+
                       <div className="flex items-center gap-4">
                         {getStatusBadge(app.status)}
                         <div className="text-white/30 group-hover:text-white/60 transition-colors">
