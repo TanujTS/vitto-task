@@ -25,6 +25,7 @@ export default function DashboardPage() {
       const lowerQuery = searchQuery.toLowerCase();
       result = result.filter(app =>
         app.name.toLowerCase().includes(lowerQuery) ||
+        app.mobile.includes(lowerQuery) ||
         app.id.toLowerCase().includes(lowerQuery)
       );
     }
